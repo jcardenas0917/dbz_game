@@ -1,0 +1,50 @@
+html,
+body {
+background-image: linear-gradient(0deg,rgba(255, 255, 255, 0.7),rgba(255, 255, 255, 0.7)),url("../images/dbz.png");
+background-size: cover;
+min-height: 100vh;
+}
+.jumbotron{
+    background-color:transparent;
+}
+#char1{
+    
+    height: 100px;
+    background-color: red;
+}
+#char2{
+    
+    height: 100px;
+    background-color: blue;
+}
+#char3{
+    
+    height: 100px;
+    background-color: green;
+}
+#char4{
+    
+    height: 100px;
+    background-color: orange;
+}
+
+#enemy1{
+    
+    height: 100px;
+    background-color: red;
+}
+#enemy2{
+    
+    height: 100px;
+    background-color: blue;
+}
+#enemy3{
+    
+    height: 100px;
+    background-color: green;
+}
+#enemy4{
+    
+    height: 100px;
+    background-color: orange;
+}
