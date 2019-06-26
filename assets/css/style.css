@@ -28,42 +28,42 @@ min-height: 100vh;
     background-color: orange;
 }
 
-#enemy1{
+#gokuen{
     
     height: 100px;
     background-color: red;
 }
-#enemy2{
+#vegetaen{
     
     height: 100px;
     background-color: blue;
 }
-#enemy3{
+#friezaen{
     
     height: 100px;
     background-color: green;
 }
-#enemy4{
+#buuen{
     
     height: 100px;
     background-color: orange;
 }
-#fight1{
+#gokudef{
     
     height: 100px;
     background-color: red;
 }
-#fight2{
+#vegetadef{
     
     height: 100px;
     background-color: blue;
 }
-#fight3{
+#friezadef{
     
     height: 100px;
     background-color: green;
 }
-#fight4{
+#buudef{
     
     height: 100px;
     background-color: orange;
