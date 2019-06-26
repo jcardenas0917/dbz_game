@@ -4,6 +4,7 @@ $(document).ready(function () {
     //OBJECT
     //crate game object 
     var game = {
+        startingAttack: 0,
         userHealth: 0,
         userAttack: 0,
         userCounterAttack: 0,
@@ -86,10 +87,9 @@ $(document).ready(function () {
             this.defCharts[3].show();
         },
 
-        attackPower: function () {
-                this.userAttack = Math.floor(Math.random() * 49) + 1;
-                console.log(this.userAttack);
-                console.log("hello");
+        attackPower: function (hit,attack) {
+            hit = hit + attack;
+            console.log(hit);
         },
         counterDamage: function () {
 
@@ -110,8 +110,10 @@ $(document).ready(function () {
     }
     // User selects a character
     $("#gokuchar").on("click", function () {
+        game.userAttack = 12;
+        game.startingAttack = 10;
         game.selectGoku();
-        game.attackPower();
+        game.attackPower(game.startingAttack,game.userAttack);
     });
 
     $("#vegetachar").on("click", function () {
@@ -132,7 +134,9 @@ $(document).ready(function () {
     //User selects enemy
     $("#gokuen").on("click", function () {
         game.enCharts[0] = $("#gokuen")
+        
         game.selectGokuEnemy();
+        
     });
 
     $("#vegetaen").on("click", function () {
@@ -151,5 +155,5 @@ $(document).ready(function () {
         game.enCharts[1] = $("#buuen")
         game.selectBuuEnemy();
     });
-
+    
 });
