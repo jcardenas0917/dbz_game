@@ -15,11 +15,11 @@ $(document).ready(function() {
         vegeta : Object,
         frieza : Object,
         buu : Object,
-        startGame : function(){
-            $("#attack").on("click", function() {
-            this.gokuSel.hide();
+        startGame: function(){
+          
+            this.enemies.hide();
             this.defenders.hide();
-            });
+         
         },
         attackDamage: function(){
 
