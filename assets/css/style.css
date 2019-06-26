@@ -7,22 +7,22 @@ min-height: 100vh;
 .jumbotron{
     background-color:transparent;
 }
-#char1{
+#gokuchar{
     
     height: 100px;
     background-color: red;
 }
-#char2{
+#vegetachar{
     
     height: 100px;
     background-color: blue;
 }
-#char3{
+#friezachar{
     
     height: 100px;
     background-color: green;
 }
-#char4{
+#buuchar{
     
     height: 100px;
     background-color: orange;
@@ -48,3 +48,24 @@ min-height: 100vh;
     height: 100px;
     background-color: orange;
 }
+#fight1{
+    
+    height: 100px;
+    background-color: red;
+}
+#fight2{
+    
+    height: 100px;
+    background-color: blue;
+}
+#fight3{
+    
+    height: 100px;
+    background-color: green;
+}
+#fight4{
+    
+    height: 100px;
+    background-color: orange;
+}
+
