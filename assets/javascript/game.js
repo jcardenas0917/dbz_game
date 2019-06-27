@@ -2,26 +2,31 @@ $(document).ready(function () {
 
 
     //OBJECT
-    //crate game object 
-    var game = {
+    //crate player object 
+    var player = {
         startingAttack: 0,
-        userHealth: 0,
-        userAttack: 0,
-        userCounterAttack: 0,
-        enemyHealth: 0,
-        enemyAttack: 0,
-        enemyCounterAttack: 0,
+        health: 0,
+        attack: 0,
+    }
+
+    var enemy = {
+        startingAttack: 0,
+        health: 0,
+        attack: 0,
+    }
+
+    var game = {
         characters: $("#characters"),
         enemies: $("#enemies"),
         defenders: $("#defenders"),
         userChar: [$("#gokuchar"), $("#vegetachar"), $("#friezachar"), $("#buuchar")],
         enCharts: [$("#gokuen"), $("#vegetaen"), $("#friezaen"), $("#buuen")],
         defCharts: [$("#gokudef"), $("#vegetadef"), $("#friezadef"), $("#buudef")],
-
-
+        attack : $("#attack"),
+        fightText : $("#fight"),
         //Functions
         //==============================================================================================================================================
-        startGame: function () {
+        startplayer: function () {
             this.enemies.hide();
             this.defenders.hide();
 
@@ -87,60 +92,65 @@ $(document).ready(function () {
             this.defCharts[3].show();
         },
 
-        attackPower: function (hit,attack) {
-            hit = hit + attack;
-            console.log(hit);
-        },
-        counterDamage: function () {
+        fight: function () {
+           
+            enemy.health -= player.attack;
+            // game.fightText.text(enemy.health)
+           
 
-        },
-        increaseAttack: function () {
-
-        },
-        healthDamge: function () {
-
-        },
+        }
     };
 
     //User interaction
     //=====================================================================================================
     window.onload = function () {
 
-        game.startGame();
+        game.startplayer();
     }
     // User selects a character
     $("#gokuchar").on("click", function () {
-        game.userAttack = 12;
-        game.startingAttack = 10;
+        player.attack = 12;
+        player.startingAttack = 12;
+        player.health = 140;
         game.selectGoku();
-        game.attackPower(game.startingAttack,game.userAttack);
+        
     });
 
     $("#vegetachar").on("click", function () {
-        game.selectVegeta();
-        game.attackPower();
+        player.attack = 10;
+        player.startingAttack = 8;
+        player.health = 100;
+        game.selectVegeta();  
     });
 
     $("#friezachar").on("click", function () {
+        player.attack = 10;
+        player.startingAttack = 8;
+        player.health = 120;
         game.selectFrieza();
-        game.attackPower();
+        
     });
 
     $("#buuchar").on("click", function () {
+        player.attack = 10;
+        player.startingAttack = 10;
+        player.health = 180;
         game.selectBuu();
-        game.attackPower();
+        
     });
 
     //User selects enemy
     $("#gokuen").on("click", function () {
         game.enCharts[0] = $("#gokuen")
-        
         game.selectGokuEnemy();
         
     });
 
     $("#vegetaen").on("click", function () {
         game.enCharts[1] = $("#vegetaen")
+        enemy.attack = 10;
+        enemy.startingAttack = 8;
+        enemy.health = 120;
         game.selectVegetaEnemy();
     });
     $("#vegetaen").on("click", function () {
@@ -155,5 +165,7 @@ $(document).ready(function () {
         game.enCharts[1] = $("#buuen")
         game.selectBuuEnemy();
     });
-    
+    game.attack.click(function(){
+        game.fight();
+    });
 });
