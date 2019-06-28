@@ -18,11 +18,17 @@ h5{
 }
 .gokuUser{
     position: absolute;
-    top:70%;
-    left:30%;
+    top:5%;
+    left:5%;
     font-weight: bold;
     color:black;
-    background-color: white;
+}
+#gokuHealth{
+    position: absolute;
+    top:5%;
+    right:5%;
+    font-weight: bold;
+    color:black; 
 }
 #vegetachar{
     position: relative;
@@ -31,37 +37,55 @@ h5{
 }
 .vegetaUser{
     position: absolute;
-    top:70%;
-    left:30%;
+    top:5%;
+    left:5%;
     font-weight: bold;
-    color:black;
-    background-color: white;
+    color:black;  
+}
+#vegetaHealth{
+    position: absolute;
+    top:5%;
+    right:5%;
+    font-weight: bold;
+    color:black; 
 }
 #friezachar{
-    
+    position: relative;
     height: 100px;
     background-color:purple;
 }
 .friezaUser{
     position: absolute;
-    top:70%;
-    left:30%;
+    top:5%;
+    left:5%;
     font-weight: bold;
     color:black;
-    background-color: white;
+}
+#friezaHealth{
+    position: absolute;
+    top:5%;
+    right:5%;
+    font-weight: bold;
+    color:black; 
 }
 #buuchar{
-    
+    position: relative;
     height: 100px;
     background-color : pink;
 }
 .buuUser{
     position: absolute;
-    top:70%;
-    left:30%;
+    top:5%;
+    left:5%;
     font-weight: bold;
     color:black;
-    background-color: white;
+}
+#buuHealth{
+    position: absolute;
+    top:5%;
+    right:5%;
+    font-weight: bold;
+    color:black; 
 }
 
 #gokuen{
@@ -123,6 +147,7 @@ h5{
     font-size:xx-large;
     font-weight: bold;
 }
+
 
 
 

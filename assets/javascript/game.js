@@ -34,11 +34,6 @@ $(document).ready(function () {
             this.enemies.hide();
             this.defenders.hide();
             this.reset.hide();
-            enemy.counterAttack = 0;
-            enemy.health = 0;
-            player.baseAttack = 0;
-            player.health = 0;
-            player.currentAttack = 0;
         },
 
         //This section manipulates the character selection
@@ -111,8 +106,8 @@ $(document).ready(function () {
             console.log(player.baseAttack);
             player.health -= enemy.counterAttack;
             console.log(player.health);
-            player.userStats.text("Attacked for " + player.currentAttack + " damage remaining health " + player.health );
-            enemy.enemyStats.text("Attacked you for " + enemy.counterAttack + " damage remaining health " +enemy.health);
+            player.userStats.text("Was Attacked for " + enemy.counterAttack + " damage remaining health " + player.health );
+            enemy.enemyStats.text("Attacked you for " + player.currentAttack + " damage remaining health " +enemy.health);
             if (enemy.health <= 0) {
                 console.log("pick a new character")
                 this.defenders.hide();
@@ -136,14 +131,14 @@ $(document).ready(function () {
             player.baseAttack = baseAttack;
             player.currentAttack = currentAttack;
             player.health = health;
-            player.name.text(name + " " + player.health);
+            player.name.text(name);
         },
         
         // _____________________ ///
         setEnemyValue : function( counterAttack, health, name){
             enemy.counterAttack = counterAttack;
             enemy.health = health;
-            enemy.name.text(name + " " + enemy.health);
+            enemy.name.text(name);
         }
     };
 
@@ -155,10 +150,8 @@ $(document).ready(function () {
     }
     // User selects a character
     $("#gokuchar").on("click", function () {
-        
         game.setPlayerValue(6,6,140,game.listOfNames[0]);
         game.selectGoku();
-
     });
 
     $("#vegetachar").on("click", function () {
@@ -184,7 +177,7 @@ $(document).ready(function () {
     //User selects enemy
     $("#gokuen").on("click", function () {
         enemy.name.text(game.listOfNames[1]);
-        game.setEnemyValue(50,1500);
+        game.setEnemyValue(6,140);
         game.nextFight();
         game.selectGokuEnemy();
 
@@ -192,19 +185,19 @@ $(document).ready(function () {
 
     $("#vegetaen").on("click", function () {
         enemy.name.text(game.listOfNames[1]);
-        game.setEnemyValue(10, 200,"Vegeta");
+        game.setEnemyValue(10, 100,"Vegeta");
         game.nextFight();
         game.selectVegetaEnemy();
     });
     $("#friezaen").on("click", function () {
         enemy.name.text(game.listOfNames[2]);
-        game.setEnemyValue(10, 100);
+        game.setEnemyValue(8, 120);
         game.nextFight();
         game.selectFriezaEnemy();
     });
     $("#buuen").on("click", function () {
         enemy.name.text(game.listOfNames[3]);
-        game.setEnemyValue(50,1500);
+        game.setEnemyValue(10,180);
         game.nextFight();
         game.selectBuuEnemy();
     });
