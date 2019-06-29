@@ -24,7 +24,7 @@ $(document).ready(function () {
         //==============================================================================================================================================
         //Game starts showing only main charactes for user to select
         startGame: function (goku, vegeta, frieza, buu) {
-            
+
             $("#enemies").hide();
             $("#defenders").hide();
             $("#reset").hide();
@@ -33,12 +33,12 @@ $(document).ready(function () {
             $(".vegetaHealth").text(vegeta);
             $(".friezaHealth").text(frieza);
             $(".buuHealth").text(buu);
-            
+
         },
 
         //This section manipulates the character selection
         //It will manipulate the DOM based on character Selected
-        
+
         //User selects Goku Settings
         selectGoku: function () {
             $("#vegetachar").hide();
@@ -124,13 +124,14 @@ $(document).ready(function () {
 
             //Calculate the enemy health after each hit from player
             enemy.health -= player.baseAttack;
-            
+
 
             //Calculate the players health after each hit from enemy
             //Increments player attack after each attack
             player.baseAttack += player.currentAttack;
             player.health -= enemy.counterAttack;
-            console.log(player.baseAttack)
+
+
             //Check which character was chosen to diplay 
             //the players health next to the character
             if (player.name === this.listOfNames[0]) {
@@ -166,21 +167,21 @@ $(document).ready(function () {
 
 
                 //checks if the player's health reached zero to lose the game.
-             }else if (player.health <= 0) {
-                    $("#userStats").text("you lost");
-                    $("#enemyStats").text("");
-                    $("#enemies").hide();
-                    $("#attack").attr("disabled", true);
-                    $("#reset").show();
+            } else if (player.health <= 0) {
+                $("#userStats").text("you lost");
+                $("#enemyStats").text("");
+                $("#enemies").hide();
+                $("#attack").attr("disabled", true);
+                $("#reset").show();
 
-                    //Check for each for health of each enemy
+                //Check for each for health of each enemy
                 //after being defeated will move on to the next fight
-                } else if (enemy.health <= 0) {
+            } else if (enemy.health <= 0) {
                 $("#userStats").text("pick a new character")
                 $("#enemyStats").text("");
                 $("#defenders").hide();
                 $("#attack").attr("disabled", true);
-                }
+            }
         },
 
         //function to disable the attack after each fight.
@@ -214,7 +215,7 @@ $(document).ready(function () {
 
     //Goku Character passes the players attributes
     $("#gokuchar").on("click", function () {
-        game.setPlayerValue(10,10, 140, game.listOfNames[0]);
+        game.setPlayerValue(10, 10, 140, game.listOfNames[0]);
         game.count.pop();
         game.selectGoku();
         console.log(game.count)
