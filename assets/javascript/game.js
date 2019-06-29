@@ -7,175 +7,197 @@ $(document).ready(function () {
         baseAttack: 0,
         health: 0,
         currentAttack: 0,
-        userStats: $("#userStats"),
         name: "",
-        healthDiplay: "",
     }
 
     var enemy = {
         counterAttack: 0,
         health: 0,
-        enemyStats: $("#enemyStats"),
         name: "",
         healthDiplay: "",
     }
 
     var game = {
-        characters: $("#characters"),
-        enemies: $("#enemies"),
-        defenders: $("#defenders"),
-        userChar: [$("#gokuchar"), $("#vegetachar"), $("#friezachar"), $("#buuchar")],
-        enCharts: [$("#gokuen"), $("#vegetaen"), $("#friezaen"), $("#buuen")],
-        defCharts: [$("#gokudef"), $("#vegetadef"), $("#friezadef"), $("#buudef")],
-        listOfNames:["Goku","Vegeta","Frieza","Maijin Buu"],
-        count: [1,2,3,4],
-        gokuHealth: $(".gokuHealth"),
-        vegetaHealth: $(".vegetaHealth"),
-        friezaHealth: $(".friezaHealth"),
-        buuHealth:  $(".buuHealth"),
-        attack: $("#attack"),
-        reset: $("#reset"),
+        listOfNames: ["Goku", "Vegeta", "Frieza", "Maijin Buu"],
+        count: [1, 2, 3, 4],
         //Functions
         //==============================================================================================================================================
-        startGame: function (goku,vegeta,frieza,buu) {
-            this.enemies.hide();
-            this.defenders.hide();
-            this.reset.hide();
-            this.gokuHealth.text(goku);
-            this.vegetaHealth.text(vegeta);
-            this.friezaHealth.text(frieza);
-            this.buuHealth.text(buu);
+        //Game starts showing only main charactes for user to select
+        startGame: function (goku, vegeta, frieza, buu) {
+            
+            $("#enemies").hide();
+            $("#defenders").hide();
+            $("#reset").hide();
+            $("#attack").attr("disabled", true);
+            $(".gokuHealth").text(goku);
+            $(".vegetaHealth").text(vegeta);
+            $(".friezaHealth").text(frieza);
+            $(".buuHealth").text(buu);
+            
         },
 
         //This section manipulates the character selection
-
+        //It will manipulate the DOM based on character Selected
+        
+        //User selects Goku Settings
         selectGoku: function () {
-            this.userChar[1].hide();
-            this.userChar[2].hide();
-            this.userChar[3].hide();
-            this.enemies.show();
-            this.enCharts[0].hide();
-            
-            
+            $("#vegetachar").hide();
+            $("#friezachar").hide();
+            $("#buuchar").hide();
+            $("#enemies").show();
+            $("#gokuen").hide();
         },
+
+        //User selects Vegeta Settings
         selectVegeta: function () {
-            this.userChar[0].hide();
-            this.userChar[2].hide();
-            this.userChar[3].hide();
-            this.enemies.show();
-            this.enCharts[1].hide()
+            $("#gokuchar").hide();
+            $("#friezachar").hide();
+            $("#buuchar").hide();
+            $("#enemies").show();
+            $("#vegetaen").hide()
         },
+
+        //User selects Frieza Settings
         selectFrieza: function () {
-            this.userChar[0].hide();
-            this.userChar[1].hide();
-            this.userChar[3].hide();
-            this.enemies.show();
-            this.enCharts[2].hide()
+            $("#gokuchar").hide();
+            $("#vegetachar").hide();
+            $("#buuchar").hide();
+            $("#enemies").show();
+            $("#friezaen").hide();
         },
+
+        //User selects Maijin Buu Settings
         selectBuu: function () {
-            this.userChar[0].hide();
-            this.userChar[1].hide();
-            this.userChar[2].hide();
-            this.enemies.show();
-            this.enCharts[3].hide()
+            $("#gokuchar").hide();
+            $("#vegetachar").hide();
+            $("#friezachar").hide();
+            $("#enemies").show();
+            $("#buuen").hide()
         },
+
+        //User selects Goku as Enemy Settings
         selectGokuEnemy: function () {
-            this.enCharts[0].hide();
-            this.defenders.show();
-            this.defCharts[0].show();
-            this.defCharts[1].hide();
-            this.defCharts[2].hide();
-            this.defCharts[3].hide();
+            $("#gokuen").hide();
+            $("#defenders").show();
+            $("#gokudef").show();
+            $("#vegetadef").hide();
+            $("#friezadef").hide();
+            $("#buudef").hide();
         },
+
+        //User selects Vegeta as Enemy Settings
         selectVegetaEnemy: function () {
-            this.enCharts[1].hide();
-            this.defenders.show();
-            this.defCharts[0].hide();
-            this.defCharts[1].show();
-            this.defCharts[2].hide();
-            this.defCharts[3].hide();
+            $("#vegetaen").hide();
+            $("#defenders").show();
+            $("#gokudef").hide();
+            $("#vegetadef").show();
+            $("#friezadef").hide();
+            $("#buudef").hide();
         },
+
+        //User selects Frieza as Enemy Settings
         selectFriezaEnemy: function () {
-            this.enCharts[2].hide();
-            this.defenders.show();
-            this.defCharts[0].hide();
-            this.defCharts[1].hide();
-            this.defCharts[2].show();
-            this.defCharts[3].hide();
+            $("#friezaen").hide();
+            $("#defenders").show();
+            $("#gokudef").hide();
+            $("#vegetadef").hide();
+            $("#friezadef").show();
+            $("#buudef").hide();
         },
+
+        //User selects Maijin Buu as Enemy Settings
         selectBuuEnemy: function () {
-            this.enCharts[3].hide();
-            this.defenders.show();
-            this.defCharts[0].hide();
-            this.defCharts[1].hide();
-            this.defCharts[2].hide();
-            this.defCharts[3].show();
+            $("#buuen").hide();
+            $("#defenders").show();
+            $("#gokudef").hide();
+            $("#vegetadef").hide();
+            $("#friezadef").hide();
+            $("#buudef").show();
         },
-        //function controls the fight outcome
+
+        //function that controls the fight outcome
         fight: function () {
-            player.userStats.text("You attacked " + enemy.name + " for " + player.baseAttack  + " damage");
-            enemy.enemyStats.text(enemy.name + " attacked you for " + enemy.counterAttack + " damage");
+            document.getElementById("music").play();
+            //displays the action of the fight 
+            $("#userStats").text("You attacked " + enemy.name + " for " + player.baseAttack + " damage");
+            $("#enemyStats").text(enemy.name + " attacked you for " + enemy.counterAttack + " damage");
+
+            //Calculate the enemy health after each hit from player
             enemy.health -= player.baseAttack;
+            
+
+            //Calculate the players health after each hit from enemy
+            //Increments player attack after each attack
             player.baseAttack += player.currentAttack;
             player.health -= enemy.counterAttack;
-            
-            console.log(player.health)
-            if (player.name === this.listOfNames[0]){
-                this.gokuHealth.text(player.health); 
-            }else if (player.name === this.listOfNames[1]){
-                this.vegetaHealth.text(player.health); 
-            }else if (player.name === this.listOfNames[2]){
-                this.friezaHealth.text(player.health);
-            }else if (player.name === this.listOfNames[3]){
-                this.buuHealth.text(player.health);
+            console.log(player.baseAttack)
+            //Check which character was chosen to diplay 
+            //the players health next to the character
+            if (player.name === this.listOfNames[0]) {
+                $(".gokuHealth").text(player.health);
+            } else if (player.name === this.listOfNames[1]) {
+                $(".vegetaHealth").text(player.health);
+            } else if (player.name === this.listOfNames[2]) {
+                $(".friezaHealth").text(player.health);
+            } else if (player.name === this.listOfNames[3]) {
+                $(".buuHealth").text(player.health);
             };
 
-            if (enemy.name === this.listOfNames[0]){
-                this.gokuHealth.text(enemy.health); 
-            }else if (enemy.name === this.listOfNames[1]){
-                this.vegetaHealth.text(enemy.health); 
-            }else if (enemy.name === this.listOfNames[2]){
-                this.friezaHealth.text(enemy.health);
-            }else if (enemy.name === this.listOfNames[3]){
-                this.buuHealth.text(enemy.health);
+            //Check which character was chosen to diplay 
+            //the enemies health next to the character
+            if (enemy.name === this.listOfNames[0]) {
+                $(".gokuHealth").text(enemy.health);
+            } else if (enemy.name === this.listOfNames[1]) {
+                $(".vegetaHealth").text(enemy.health);
+            } else if (enemy.name === this.listOfNames[2]) {
+                $(".friezaHealth").text(enemy.health);
+            } else if (enemy.name === this.listOfNames[3]) {
+                $(".buuHealth").text(enemy.health);
             };
 
+            //Check if the enemy was defeated and if there are
+            //more enemies available if not the player wins
+            if (enemy.health <= 0 && game.count.length === 0) {
+                $("#userStats").text("YOU WIN");
+                $("#reset").show();
+                $("#enemyStats").text("");
+                $("#defenders").hide();
+                $("#attack").attr("disabled", true);
 
-            if (enemy.health<=0 && game.count.length===0){
-            player.userStats.text("YOU WIN");
-            this.reset.show();
-            enemy.enemyStats.text("");
-                this.defenders.hide();
-                this.attack.attr("disabled", true);
-            } else if (enemy.health <= 0) {
-                player.userStats.text("pick a new character")
-                enemy.enemyStats.text("");
-                this.defenders.hide();
-                this.attack.attr("disabled", true);
-                
-            } else if (player.health <= 0) {
-                player.userStats.text("you lost");
-                enemy.enemyStats.text("");
-                this.enemies.hide();
-                this.attack.attr("disabled", true);
-                this.reset.show();
-            
-        };   
-    },
-        nextFight: function(){
-            this.attack.attr("disabled",false);
+
+                //checks if the player's health reached zero to lose the game.
+             }else if (player.health <= 0) {
+                    $("#userStats").text("you lost");
+                    $("#enemyStats").text("");
+                    $("#enemies").hide();
+                    $("#attack").attr("disabled", true);
+                    $("#reset").show();
+
+                    //Check for each for health of each enemy
+                //after being defeated will move on to the next fight
+                } else if (enemy.health <= 0) {
+                $("#userStats").text("pick a new character")
+                $("#enemyStats").text("");
+                $("#defenders").hide();
+                $("#attack").attr("disabled", true);
+                }
         },
 
-        // ___________________ ///
-        setPlayerValue : function( baseAttack, currentAttack, health, name){
+        //function to disable the attack after each fight.
+        nextFight: function () {
+            $("#attack").attr("disabled", false);
+        },
+
+        // Sets players values after choosing a fighter///
+        setPlayerValue: function (baseAttack, currentAttack, health, name) {
             player.baseAttack = baseAttack;
             player.currentAttack = currentAttack;
-            player.health = health; 
+            player.health = health;
             player.name = name;
         },
-        
-        // _____________________ ///
-        setEnemyValue : function( counterAttack, health, name){
+
+        // Sets enemies values after selecting an enemy ///
+        setEnemyValue: function (counterAttack, health, name) {
             enemy.counterAttack = counterAttack;
             enemy.health = health;
             enemy.name = name;
@@ -186,73 +208,88 @@ $(document).ready(function () {
     //=====================================================================================================
     window.onload = function () {
 
-        game.startGame(120,100,150,180);
+        game.startGame(140, 120, 150, 180);
     }
     // User selects a character
+
+    //Goku Character passes the players attributes
     $("#gokuchar").on("click", function () {
-        game.setPlayerValue(6,6,120,game.listOfNames[0]);
+        game.setPlayerValue(10,10, 140, game.listOfNames[0]);
         game.count.pop();
         game.selectGoku();
         console.log(game.count)
-        
+
     });
 
+    //Vegeta Character passes the players attributes
     $("#vegetachar").on("click", function () {
 
-        game.setPlayerValue(10,10,100,game.listOfNames[1]);
+        game.setPlayerValue(8, 8, 120, game.listOfNames[1]);
         game.count.pop();
         game.selectVegeta();
     });
 
+    //Frieza Character passes the players attributes
     $("#friezachar").on("click", function () {
-        game.setPlayerValue(8,8,150,game.listOfNames[2]);
+        game.setPlayerValue(8, 8, 150, game.listOfNames[2]);
         game.count.pop();
         game.selectFrieza();
 
     });
 
+    //Maijin Buu Character passes the players attributes
     $("#buuchar").on("click", function () {
-        game.setPlayerValue(10,10,180,game.listOfNames[3]);
+        game.setPlayerValue(10, 10, 180, game.listOfNames[3]);
         game.count.pop();
         game.selectBuu();
 
     });
 
     //User selects enemy
+
+    //Goku Enemy Character passes the enemy's attributes
     $("#gokuen").on("click", function () {
-        game.setEnemyValue(6,120,game.listOfNames[0]);
+        game.setEnemyValue(15, 120, game.listOfNames[0]);
         game.selectGokuEnemy();
         game.count.pop();
         console.log(game.count)
         game.nextFight();
 
     });
-
+    //Vegeta Enemy Character passes the enemy's attributes
     $("#vegetaen").on("click", function () {
-        game.setEnemyValue(10, 100,game.listOfNames[1]);
+        game.setEnemyValue(5, 100, game.listOfNames[1]);
         game.selectVegetaEnemy();
         game.count.pop();
         console.log(game.count)
         game.nextFight();
     });
+
+    //Frieza Enemy Character passes the enemy's attributes
     $("#friezaen").on("click", function () {
-        game.setEnemyValue(8, 150,game.listOfNames[2]);
+        game.setEnemyValue(20, 150, game.listOfNames[2]);
         game.selectFriezaEnemy();
         game.count.pop();
         console.log(game.count)
         game.nextFight();
     });
+
+    //Maijin Buu Enemy Character passes the enemy's attributes
     $("#buuen").on("click", function () {
-        game.setEnemyValue(10,180,game.listOfNames[3]);
+        game.setEnemyValue(25, 180, game.listOfNames[3]);
         game.selectBuuEnemy();
         game.count.pop();
         console.log(game.count)
         game.nextFight();
     });
-    game.attack.click(function () {
+
+    //Calls fight function to start
+    $("#attack").click(function () {
         game.fight();
     });
-    game.reset.click(function (){
+
+    //Reset the game
+    $("#reset").click(function () {
         location.reload();
     })
 });

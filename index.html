@@ -18,7 +18,9 @@
 </head>
 
 <body>
-    
+    <audio id="music">
+        <source src="./assets/sounds/bdz.ogg" />
+    </audio>
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
             <div class="row">
@@ -67,7 +69,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <div class="row" id="enemies">
+                    <div class="row" id="enemies" class = "hide">
                         <div class="col-md-3" id="gokuen">
                             <div>
                                 <img class="goku" src="./assets/images/goku.png" alt="goku" height="100" width="100">
@@ -106,7 +108,7 @@
 
             <div class="row">
                 <div class="col-md-6">
-                    <div class="row" id="defenders">
+                    <div class="row" id="defenders" class = "hide">
                         <div class="col-md-3" id="gokudef">
                             <div>
                                 <img class="goku" src="./assets/images/goku.png" alt="goku" height="100" width="100">
@@ -136,7 +138,7 @@
 
                     <div class="row">
                         <div class="col-md-3">
-                            <button id="reset">Reset</button>
+                            <button id="reset" class = "hide">Reset</button>
                         </div>
                     </div>
                 </div>
