@@ -23,7 +23,7 @@ h5{
     font-weight: bold;
     color:black;
 }
-#gokuHealth{
+.gokuHealth{
     position: absolute;
     top:5%;
     right:5%;
@@ -42,7 +42,7 @@ h5{
     font-weight: bold;
     color:black;  
 }
-#vegetaHealth{
+.vegetaHealth{
     position: absolute;
     top:5%;
     right:5%;
@@ -61,7 +61,7 @@ h5{
     font-weight: bold;
     color:black;
 }
-#friezaHealth{
+.friezaHealth{
     position: absolute;
     top:5%;
     right:5%;
@@ -80,7 +80,7 @@ h5{
     font-weight: bold;
     color:black;
 }
-#buuHealth{
+.buuHealth{
     position: absolute;
     top:5%;
     right:5%;
@@ -147,7 +147,6 @@ h5{
     font-size:xx-large;
     font-weight: bold;
 }
-
 
 
 
