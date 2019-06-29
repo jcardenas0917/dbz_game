@@ -145,6 +145,7 @@ $(document).ready(function () {
                 enemy.enemyStats.text("");
                 this.defenders.hide();
                 this.attack.attr("disabled", true);
+                game.nextFight();
 
             } else if (player.health <= 0) {
                 player.userStats.text("you lost");
@@ -154,14 +155,14 @@ $(document).ready(function () {
                 this.reset.show();
             }
             
-            if ((this.count.length===1)){
-                    player.userStats.text("YOU WIN");
-                    this.reset.show();
-                }  
         },   
         
         nextFight: function(){
             this.attack.attr("disabled",false);
+            if ((this.count.length===0)){
+                player.userStats.text("YOU WIN");
+                this.reset.show();
+            }  
         },
 
         // ___________________ ///
