@@ -152,10 +152,11 @@ $(document).ready(function () {
                 this.attack.attr("disabled", true);
                 this.reset.show();
             }
-                if ((enCharts.length===1)){
-                    player.userStats.text("You Lost");
-                    this.reset.show();
-                }  
+            
+            // if ((this.enCharts.length===1)){
+            //         player.userStats.text("You Lost");
+            //         this.reset.show();
+            //     }  
         },   
         
         nextFight: function(){
@@ -213,7 +214,7 @@ $(document).ready(function () {
     $("#gokuen").on("click", function () {
         game.setEnemyValue(6,120,game.listOfNames[0]);
         game.selectGokuEnemy();
-        // enCharts.splice(0,0);
+        // game.enCharts.pop();
         game.nextFight();
 
     });
@@ -221,19 +222,20 @@ $(document).ready(function () {
     $("#vegetaen").on("click", function () {
         game.setEnemyValue(10, 100,game.listOfNames[1]);
         game.selectVegetaEnemy();
-        // enCharts.splice(1,1);
+        // game.enCharts.pop();
+        console.log(game.enCharts)
         game.nextFight();
     });
     $("#friezaen").on("click", function () {
         game.setEnemyValue(8, 150,game.listOfNames[2]);
         game.selectFriezaEnemy();
-        // enCharts.splice(2,2);
+        // game.enCharts.pop();
         game.nextFight();
     });
     $("#buuen").on("click", function () {
         game.setEnemyValue(10,180,game.listOfNames[3]);
         game.selectBuuEnemy();
-        // enCharts.splice(3,3);
+        // game.enCharts.pop();
         game.nextFight();
     });
     game.attack.click(function () {
