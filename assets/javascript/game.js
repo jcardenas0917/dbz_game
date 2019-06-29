@@ -140,29 +140,30 @@ $(document).ready(function () {
                 this.buuHealth.text(enemy.health);
             };
 
-            if (enemy.health <= 0) {
+
+            if (enemy.health<=0 && game.count.length===0){
+            player.userStats.text("YOU WIN");
+            this.reset.show();
+            enemy.enemyStats.text("");
+                this.defenders.hide();
+                this.attack.attr("disabled", true);
+            } else if (enemy.health <= 0) {
                 player.userStats.text("pick a new character")
                 enemy.enemyStats.text("");
                 this.defenders.hide();
                 this.attack.attr("disabled", true);
-                game.nextFight();
-
+                
             } else if (player.health <= 0) {
                 player.userStats.text("you lost");
                 enemy.enemyStats.text("");
                 this.enemies.hide();
                 this.attack.attr("disabled", true);
                 this.reset.show();
-            }
             
-        },   
-        
+        };   
+    },
         nextFight: function(){
             this.attack.attr("disabled",false);
-            if ((this.count.length===0)){
-                player.userStats.text("YOU WIN");
-                this.reset.show();
-            }  
         },
 
         // ___________________ ///
@@ -190,24 +191,29 @@ $(document).ready(function () {
     // User selects a character
     $("#gokuchar").on("click", function () {
         game.setPlayerValue(6,6,120,game.listOfNames[0]);
+        game.count.pop();
         game.selectGoku();
+        console.log(game.count)
         
     });
 
     $("#vegetachar").on("click", function () {
 
         game.setPlayerValue(10,10,100,game.listOfNames[1]);
+        game.count.pop();
         game.selectVegeta();
     });
 
     $("#friezachar").on("click", function () {
         game.setPlayerValue(8,8,150,game.listOfNames[2]);
+        game.count.pop();
         game.selectFrieza();
 
     });
 
     $("#buuchar").on("click", function () {
         game.setPlayerValue(10,10,180,game.listOfNames[3]);
+        game.count.pop();
         game.selectBuu();
 
     });
