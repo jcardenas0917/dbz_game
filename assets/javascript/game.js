@@ -28,6 +28,7 @@ $(document).ready(function () {
         enCharts: [$("#gokuen"), $("#vegetaen"), $("#friezaen"), $("#buuen")],
         defCharts: [$("#gokudef"), $("#vegetadef"), $("#friezadef"), $("#buudef")],
         listOfNames:["Goku","Vegeta","Frieza","Maijin Buu"],
+        count: [1,2,3,4],
         gokuHealth: $(".gokuHealth"),
         vegetaHealth: $(".vegetaHealth"),
         friezaHealth: $(".friezaHealth"),
@@ -37,7 +38,7 @@ $(document).ready(function () {
         //Functions
         //==============================================================================================================================================
         startGame: function (goku,vegeta,frieza,buu) {
-            // this.enemies.hide();
+            this.enemies.hide();
             this.defenders.hide();
             this.reset.hide();
             this.gokuHealth.text(goku);
@@ -118,7 +119,7 @@ $(document).ready(function () {
             player.baseAttack += player.currentAttack;
             player.health -= enemy.counterAttack;
             
-            
+            console.log(player.health)
             if (player.name === this.listOfNames[0]){
                 this.gokuHealth.text(player.health); 
             }else if (player.name === this.listOfNames[1]){
@@ -153,10 +154,10 @@ $(document).ready(function () {
                 this.reset.show();
             }
             
-            // if ((this.enCharts.length===1)){
-            //         player.userStats.text("You Lost");
-            //         this.reset.show();
-            //     }  
+            if ((this.count.length===1)){
+                    player.userStats.text("YOU WIN");
+                    this.reset.show();
+                }  
         },   
         
         nextFight: function(){
@@ -214,7 +215,8 @@ $(document).ready(function () {
     $("#gokuen").on("click", function () {
         game.setEnemyValue(6,120,game.listOfNames[0]);
         game.selectGokuEnemy();
-        // game.enCharts.pop();
+        game.count.pop();
+        console.log(game.count)
         game.nextFight();
 
     });
@@ -222,20 +224,22 @@ $(document).ready(function () {
     $("#vegetaen").on("click", function () {
         game.setEnemyValue(10, 100,game.listOfNames[1]);
         game.selectVegetaEnemy();
-        // game.enCharts.pop();
-        console.log(game.enCharts)
+        game.count.pop();
+        console.log(game.count)
         game.nextFight();
     });
     $("#friezaen").on("click", function () {
         game.setEnemyValue(8, 150,game.listOfNames[2]);
         game.selectFriezaEnemy();
-        // game.enCharts.pop();
+        game.count.pop();
+        console.log(game.count)
         game.nextFight();
     });
     $("#buuen").on("click", function () {
         game.setEnemyValue(10,180,game.listOfNames[3]);
         game.selectBuuEnemy();
-        // game.enCharts.pop();
+        game.count.pop();
+        console.log(game.count)
         game.nextFight();
     });
     game.attack.click(function () {
